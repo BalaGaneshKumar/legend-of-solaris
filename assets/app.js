@@ -29,11 +29,12 @@ return '<a class="bk'+(open?'':' off')+'" href="#book-'+b.id+'"><div class="win"
 var MQ=matchMedia("(max-width:720px) and (orientation:portrait)"),V=MQ.matches;document.documentElement.classList.toggle("v",V);
 var st=$("stage"),lv=[],N=0,ang=[],cur=0,busy=false,drag=null,book=null,FN=0,cl,cr,lbl=$("lbl"),pv=$("pv"),nx=$("nx");
 function build(b){book=b;FN=b.al.length;cur=0;busy=false;drag=null;document.documentElement.style.setProperty("--r",b.r);
-var pg=b.al.map(function(a,i){return '<div class="art"><img src="'+src(b.id+"/"+pad(i+1))+'" alt="'+a+'" draggable="false"></div>'});
+var pg=b.al.map(function(a,i){return '<div class="art ld"><i></i><i></i><i></i><i></i><i></i><img src="'+src(b.id+"/"+pad(i+1))+'" alt="'+a+'" draggable="false"></div>'});
 pg.push('<div class="txt mid"><div class="eyebrow">End of '+b.n+'</div><div class="orn c"></div><p class="small thx">Thanks to<span class="gp">'+mk(MP[B.indexOf(b)])+'</span>who gave the inspiration for all characters.</p><p class="ln" lang="ta">'+QS[B.indexOf(b)]+'</p></div>');if(FN%2===0)pg.push("");
 var nb=B[B.indexOf(b)+1],lh="";
 for(var k=0;k<pg.length/2;k++)lh+='<div class="leaf"><div class="pg rp front">'+pg[2*k]+'<i class="shade"></i></div><div class="pg lp back">'+pg[2*k+1]+'<i class="shade"></i></div></div>';
 st.innerHTML='<div class="base l"><div class="pg lp"><div class="txt"><div class="eyebrow">'+b.n+'</div><h2 class="t">'+b.t+'</h2><div class="orn"></div><p>'+b.d+'</p><p class="sig"><span class="bx"><span>by</span><img src="'+src("brand/bgkumar")+'" alt="BGKumar" draggable="false"></span></p></div><div class="foot">The Legend of Solaris</div></div></div><div class="base r"><div class="pg rp"><div class="txt mid"><div class="eyebrow">'+(nb?"Next":"The end")+'</div>'+(nb?'<h2 class="t">'+nb.n+'<br>'+nb.t+'</h2>':"")+'</div></div></div>'+lh+'<div class="cast cl" id="cl"></div><div class="cast cr" id="cr"></div>';
+watch();
 lv=[].slice.call(st.querySelectorAll(".leaf"));N=lv.length;ang=lv.map(function(){return 0});cl=$("cl");cr=$("cr");
 lv.forEach(function(_,j){paint(j,0,false)});$("rt").textContent=b.n+" · "+b.t;ui()}
 function paint(i,a,on){var L=lv[i];L.style.transform=V?"rotateX("+a+"deg)":"rotateY("+(-a)+"deg)";
@@ -45,6 +46,7 @@ function ui(){var L=2*cur,R=2*cur+1;lbl.textContent=cur===0?"Title · Frame 1":c
 pv.disabled=cur<=0&&!ps;nx.disabled=cur>=N&&!ns;
 pg.textContent=cur<=0?"«":"‹";ng.textContent=cur>=N?"»":"›";
 pv.setAttribute("aria-label",cur<=0?"Previous story":"Previous page");nx.setAttribute("aria-label",cur>=N?"Next story":"Next page")}
+function watch(){[].forEach.call(st.querySelectorAll(".art.ld img"),function(im){var a=im.parentNode,d=function(){a.classList.remove("ld");[].slice.call(a.querySelectorAll("i")).forEach(function(x){a.removeChild(x)})};if(im.complete&&im.naturalWidth)d();else{im.addEventListener("load",d);im.addEventListener("error",d)}})}
 function sib(d){var o=B[B.indexOf(book)+d];return o&&o.al?o:null}
 function go(i,to){return new Promise(function(res){var f=ang[i],t0=performance.now(),d=260+720*Math.abs(to-f)/180;busy=true;var bk=book;
 (function step(t){if(book!==bk)return;var p=Math.min(1,(t-t0)/d),e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;ang[i]=f+(to-f)*e;paint(i,ang[i],p<1);
