@@ -55,7 +55,8 @@ function next(){if(busy)return;if(cur>=N){var s=sib(1);if(s)nav(s.id);return}go(
 function prev(){if(busy)return;if(cur<=0){var s=sib(-1);if(s)nav(s.id);return}go(cur-1,0).then(function(){cur--;ui()})}
 pv.addEventListener("click",prev);nx.addEventListener("click",next);
 addEventListener("keydown",function(e){if($("reader").hidden)return;if(e.key==="ArrowRight"||e.key==="ArrowDown")next();if(e.key==="ArrowLeft"||e.key==="ArrowUp")prev();if(e.key==="Escape")nav("")});
-st.addEventListener("pointerdown",function(e){if(busy)return;var r=st.getBoundingClientRect(),right=V?e.clientY>r.top+r.height/2:e.clientX>r.left+r.width/2;
+var zm=false,zt=$("zm");zt.addEventListener("change",function(){zm=zt.checked;var r=document.documentElement.classList;r.toggle("zm",zm);r.add("pl")});
+st.addEventListener("pointerdown",function(e){if(busy||zm)return;var r=st.getBoundingClientRect(),right=V?e.clientY>r.top+r.height/2:e.clientX>r.left+r.width/2;
 if(right&&cur<N)drag={dir:1,i:cur,x:V?e.clientY:e.clientX,m:false};else if(!right&&cur>0)drag={dir:-1,i:cur-1,x:V?e.clientY:e.clientX,m:false};
 if(drag){drag.pw=V?r.height/2:r.width/2;st.setPointerCapture(e.pointerId)}});
 st.addEventListener("pointermove",function(e){if(!drag)return;var dx=(V?e.clientY:e.clientX)-drag.x;if(Math.abs(dx)>6)drag.m=true;if(!drag.m)return;
