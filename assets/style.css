@@ -102,12 +102,22 @@ h2.t{font-weight:600;color:#14100a;font-size:10.5cqw;line-height:1.05;margin:.35
 .gp svg{display:block;width:100%;height:auto;fill:currentColor}
 .art img{transition:opacity .4s ease}
 .art.ld{background:#0a0912}
-.art.ld img{opacity:0}
-.art.ld i{position:absolute;width:7px;height:7px;border-radius:50%;background:#f1d27a;box-shadow:0 0 7px rgba(241,210,122,.7);opacity:0;animation:tw 1.5s ease-in-out .15s infinite}
-.art.ld i:nth-child(1){left:22%;top:24%}
-.art.ld i:nth-child(2){left:68%;top:17%;animation-delay:.5s}
-.art.ld i:nth-child(3){left:46%;top:47%;width:9px;height:9px;animation-delay:.8s}
-.art.ld i:nth-child(4){left:27%;top:71%;animation-delay:1.05s}
-.art.ld i:nth-child(5){left:74%;top:65%;animation-delay:.65s}
-@keyframes tw{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}
-@media (prefers-reduced-motion:reduce){.art.ld i{animation:none;opacity:.8}}
+.art.ld i{position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;background:#f1d27a;clip-path:polygon(50.0% 0.0%,54.2% 39.8%,71.9% 28.1%,60.2% 45.8%,100.0% 50.0%,60.2% 54.2%,71.9% 71.9%,54.2% 60.2%,50.0% 100.0%,45.8% 60.2%,28.1% 71.9%,39.8% 54.2%,0.0% 50.0%,39.8% 45.8%,28.1% 28.1%,45.8% 39.8%);visibility:hidden;opacity:.12}
+.art.ld i:nth-child(1){transform:rotate(0deg) translateY(-30px) rotate(-0deg);animation:f1 1.8s linear infinite,vs 0s linear .15s forwards}
+.art.ld i:nth-child(2){transform:rotate(45deg) translateY(-30px) rotate(-45deg);animation:f2 1.8s linear infinite,vs 0s linear .15s forwards}
+.art.ld i:nth-child(3){transform:rotate(90deg) translateY(-30px) rotate(-90deg);animation:f3 1.8s linear infinite,vs 0s linear .15s forwards}
+.art.ld i:nth-child(4){transform:rotate(135deg) translateY(-30px) rotate(-135deg);animation:f4 1.8s linear infinite,vs 0s linear .15s forwards}
+.art.ld i:nth-child(5){transform:rotate(180deg) translateY(-30px) rotate(-180deg);animation:f5 1.8s linear infinite,vs 0s linear .15s forwards}
+.art.ld i:nth-child(6){transform:rotate(225deg) translateY(-30px) rotate(-225deg);animation:f6 1.8s linear infinite,vs 0s linear .15s forwards}
+.art.ld i:nth-child(7){transform:rotate(270deg) translateY(-30px) rotate(-270deg);animation:f7 1.8s linear infinite,vs 0s linear .15s forwards}
+.art.ld i:nth-child(8){transform:rotate(315deg) translateY(-30px) rotate(-315deg);animation:f8 1.8s linear infinite,vs 0s linear .15s forwards}
+@keyframes f1{0%,6%{opacity:.12}9%,90%{opacity:1}96%,100%{opacity:.12}}
+@keyframes f2{0%,15%{opacity:.12}18%,90%{opacity:1}96%,100%{opacity:.12}}
+@keyframes f3{0%,24%{opacity:.12}27%,90%{opacity:1}96%,100%{opacity:.12}}
+@keyframes f4{0%,33%{opacity:.12}36%,90%{opacity:1}96%,100%{opacity:.12}}
+@keyframes f5{0%,42%{opacity:.12}45%,90%{opacity:1}96%,100%{opacity:.12}}
+@keyframes f6{0%,51%{opacity:.12}54%,90%{opacity:1}96%,100%{opacity:.12}}
+@keyframes f7{0%,60%{opacity:.12}63%,90%{opacity:1}96%,100%{opacity:.12}}
+@keyframes f8{0%,69%{opacity:.12}72%,90%{opacity:1}96%,100%{opacity:.12}}
+@keyframes vs{to{visibility:visible}}
+@media (prefers-reduced-motion:reduce){.art.ld i{animation:none;visibility:visible;opacity:.7}}

@@ -29,7 +29,7 @@ return '<a class="bk'+(open?'':' off')+'" href="#book-'+b.id+'"><div class="win"
 var MQ=matchMedia("(max-width:720px) and (orientation:portrait)"),V=MQ.matches;document.documentElement.classList.toggle("v",V);
 var st=$("stage"),lv=[],N=0,ang=[],cur=0,busy=false,drag=null,book=null,FN=0,cl,cr,lbl=$("lbl"),pv=$("pv"),nx=$("nx");
 function build(b){book=b;FN=b.al.length;cur=0;busy=false;drag=null;document.documentElement.style.setProperty("--r",b.r);
-var pg=b.al.map(function(a,i){return '<div class="art ld"><i></i><i></i><i></i><i></i><i></i><img src="'+src(b.id+"/"+pad(i+1))+'" alt="'+a+'" draggable="false"></div>'});
+var pg=b.al.map(function(a,i){return '<div class="art ld"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><img src="'+src(b.id+"/"+pad(i+1))+'" alt="'+a+'" draggable="false"></div>'});
 pg.push('<div class="txt mid"><div class="eyebrow">End of '+b.n+'</div><div class="orn c"></div><p class="small thx">Thanks to<span class="gp">'+mk(MP[B.indexOf(b)])+'</span>who gave the inspiration for all characters.</p><p class="ln" lang="ta">'+QS[B.indexOf(b)]+'</p></div>');if(FN%2===0)pg.push("");
 var nb=B[B.indexOf(b)+1],lh="";
 for(var k=0;k<pg.length/2;k++)lh+='<div class="leaf"><div class="pg rp front">'+pg[2*k]+'<i class="shade"></i></div><div class="pg lp back">'+pg[2*k+1]+'<i class="shade"></i></div></div>';
